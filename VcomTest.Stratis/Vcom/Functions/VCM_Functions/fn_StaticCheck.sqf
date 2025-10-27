@@ -34,9 +34,9 @@ params ["_StaticList"];
 				{
 					private _StaticCreated = _AssembledG createvehicle [0,0,100];
 			
-					[_Unit,_StaticCreated,_NearestEnemy] spawn 
+					[_Unit,_StaticCreated,_NearestEnemy,_StaticList] spawn 
 					{
-						params ["_Unit","_StaticCreated","_NearestEnemy"];
+						params ["_Unit","_StaticCreated","_NearestEnemy","_StaticList"];
 						
 						private _NewPos = _Unit modelToWorld [0,1,0.35];
 						_StaticCreated allowdamage false;
