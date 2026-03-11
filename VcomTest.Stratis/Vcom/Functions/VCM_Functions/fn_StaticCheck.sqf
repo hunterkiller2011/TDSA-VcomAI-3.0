@@ -34,9 +34,9 @@ params ["_StaticList"];
 				{
 					private _StaticCreated = _AssembledG createvehicle [0,0,100];
 			
-					[_Unit,_StaticCreated,_NearestEnemy,_StaticList] spawn 
+					[_Unit,_StaticCreated,_NearestEnemy] spawn 
 					{
-						params ["_Unit","_StaticCreated","_NearestEnemy","_StaticList"];
+						params ["_Unit","_StaticCreated","_NearestEnemy"];
 						
 						private _NewPos = _Unit modelToWorld [0,1,0.35];
 						_StaticCreated allowdamage false;
@@ -67,9 +67,9 @@ params ["_StaticList"];
 				if !(_AssembledG isEqualTo "") then
 				{
 
-					[_Unit,_NearestEnemy,_AssembledG] spawn 
+					[_Unit,_NearestEnemy,_AssembledG,_StaticList] spawn 
 					{
-						params ["_Unit","_NearestEnemy","_AssembledG"];
+						params ["_Unit","_NearestEnemy","_AssembledG","_StaticList"];
 			
 						sleep (random 2);
 						[_Unit,"AinvPknlMstpSnonWnonDnon_Putdown_AmovPknlMstpSnonWnonDnon"] remoteExec ["Vcm_PMN",0];
