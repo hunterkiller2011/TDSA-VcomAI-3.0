@@ -19,7 +19,8 @@ private _satchelObj = _satchelArray select 0;
 private _satchelMag = _satchelArray select 1;
 
 //Let's see if we can place a scripted version of the item.
-private _testName = _satchelObj + "_scripted";
+//private _testName = _satchelObj + "_scripted";
+private _testName = _satchelObj;
 private _testMine = _testName createVehiclelocal [0,0,0];
 if !(isNull _testMine) then
 {

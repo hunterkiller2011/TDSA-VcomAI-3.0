@@ -35,8 +35,8 @@ item30[] = {"Five_Minute_Chec",2,250,-300.000000,150.000000,-200.000000,200.0000
 item31[] = {"CheckIfStatic",4,218,950.000000,175.000000,1050.000000,225.000000,92.000000,"CheckIfStatic"};
 item32[] = {"TwoMinuteChecks",4,218,-400.000000,300.000000,-300.000000,350.000000,940.000000,"TwoMinuteChecks"};
 item33[] = {"Two_Minute_Check",2,250,-400.000000,150.000000,-300.000000,200.000000,0.000000,"Two Minute Checks"};
-item34[] = {"SatchelPlant",4,218,900.000000,150.000000,1000.000000,200.000000,85.000000,"SatchelPlant"};
-item35[] = {"MinePlant",4,218,850.000000,125.000000,950.000000,175.000000,86.000000,"MinePlant"};
+item34[] = {"MinePlant",4,218,850.000000,125.000000,950.000000,175.000000,86.000000,"MinePlant"};
+item35[] = {"SatchelPlant",4,218,900.000000,150.000000,1000.000000,200.000000,85.000000,"SatchelPlant"};
 item36[] = {"ArmStatics",4,218,800.000000,100.000000,900.000000,150.000000,106.000000,"ArmStatics"};
 item37[] = {"True",8,218,750.000000,75.000000,850.000000,125.000000,0.000000,"True"};
 item38[] = {"Exit_Cond",4,218,675.000000,475.000000,775.000000,525.000000,700.000000,"Exit Cond"};
@@ -919,8 +919,8 @@ class FSM
                                 /*%FSM<LINK "MinePlant">*/
                                 class MinePlant
                                 {
-                                        itemno = 35;
-                                        priority = 86.000000;
+                                        itemno = 34;
+                                        priority = 85.000000;
                                         to="Return";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"_BackbkC6 + 30 < time"/*%FSM</CONDITION""">*/;
@@ -934,8 +934,8 @@ class FSM
                                 /*%FSM<LINK "SatchelPlant">*/
                                 class SatchelPlant
                                 {
-                                        itemno = 34;
-                                        priority = 85.000000;
+                                        itemno = 35;
+                                        priority = 86.000000;
                                         to="Return";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"_BackbkC5 + 120 < time && {!_ActivelyClearing}"/*%FSM</CONDITION""">*/;
