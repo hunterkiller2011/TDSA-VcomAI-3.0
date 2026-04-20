@@ -77,7 +77,7 @@ private _toRemove = [];
                         name _supportUnit, _supportBagClass,
                         _vehicleClass, round _dist];
                     diag_log _dbgMsg;
-                    systemChat _dbgMsg;
+                    //systemChat _dbgMsg;
                     // END DEBUG
 
                     // --- Async assembly thread — FSM call returns immediately after this ---
@@ -137,7 +137,7 @@ private _toRemove = [];
                             // DEBUG
                             private _dbgTimeout = format ["[VCOM DEBUG] PairDeploy: TIMEOUT — %1 did not reach %2 in 30s, resetting flags", name _mover, name _target];
                             diag_log _dbgTimeout;
-                            systemChat _dbgTimeout;
+                            //systemChat _dbgTimeout;
                             // END DEBUG
                             _weaponUnit  setVariable ["VCM_InDeployment", false, false];
                             _supportUnit setVariable ["VCM_InDeployment", false, false];
@@ -148,7 +148,7 @@ private _toRemove = [];
                             // DEBUG
                             private _dbgArrive = format ["[VCOM DEBUG] PairDeploy: %1 arrived — assembling %2", name _mover, _vehicleClass];
                             diag_log _dbgArrive;
-                            systemChat _dbgArrive;
+                            //systemChat _dbgArrive;
                             // END DEBUG
                             _mover doStop true;
                             if (alive _target) then { _target doStop true; };

@@ -47,7 +47,7 @@ params ["_StaticList"];
 						// DEBUG
 						private _dbgMsg = format ["[VCOM DEBUG] StaticCheck: %1 solo-deploying %2 -> %3", name _Unit, _CurrentBackPack, _AssembledG];
 						diag_log _dbgMsg;
-						systemChat _dbgMsg;
+						//systemChat _dbgMsg;
 						// END DEBUG
 
 						private _StaticCreated = _AssembledG createvehicle [0,0,100];
@@ -87,7 +87,7 @@ params ["_StaticList"];
 						// DEBUG
 						private _dbgMsg = format ["[VCOM DEBUG] StaticCheck: %1 solo-deploying UAV %2 -> %3", name _Unit, _CurrentBackPack, _AssembledG];
 						diag_log _dbgMsg;
-						systemChat _dbgMsg;
+						//systemChat _dbgMsg;
 						// END DEBUG
 
 						// --- TDSA CHANGE: UAV spawn fix.

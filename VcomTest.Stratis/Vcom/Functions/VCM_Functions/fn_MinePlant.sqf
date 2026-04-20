@@ -35,7 +35,7 @@ if (VCM_MINECHANCE > (round (random 100)) || {!(isPlayer _x)}) then
 			// DEBUG
 			private _dbgMsg = format ["[VCOM DEBUG] MinePlant: %1 planting %2 (mag: %3, road: %4)", name _Unit, (_Mine#2), (_Mine#1), (_Mine#4)];
 			diag_log _dbgMsg;
-			systemChat _dbgMsg;
+			//systemChat _dbgMsg;
 			// END DEBUG
 
 			_Unit fire [(_Mine#3),(_Mine#3),(_Mine#1)];
