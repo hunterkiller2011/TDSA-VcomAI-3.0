@@ -32,6 +32,12 @@ if (VCM_MINECHANCE > (round (random 100)) || {!(isPlayer _x)}) then
 			private _Mine = VCM_MineList#_Index;
 			private _roadPreferred = _Mine#4;
 
+			// DEBUG
+			private _dbgMsg = format ["[VCOM DEBUG] MinePlant: %1 planting %2 (mag: %3, road: %4)", name _Unit, (_Mine#2), (_Mine#1), (_Mine#4)];
+			diag_log _dbgMsg;
+			systemChat _dbgMsg;
+			// END DEBUG
+
 			_Unit fire [(_Mine#3),(_Mine#3),(_Mine#1)];
 
 			if (_nearestEnemy distance2D _unit < 100) then

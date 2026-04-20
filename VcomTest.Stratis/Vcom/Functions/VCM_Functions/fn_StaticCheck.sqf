@@ -44,6 +44,12 @@ params ["_StaticList"];
 
 					if !(_AssembledG isEqualTo "") then
 					{
+						// DEBUG
+						private _dbgMsg = format ["[VCOM DEBUG] StaticCheck: %1 solo-deploying %2 -> %3", name _Unit, _CurrentBackPack, _AssembledG];
+						diag_log _dbgMsg;
+						systemChat _dbgMsg;
+						// END DEBUG
+
 						private _StaticCreated = _AssembledG createvehicle [0,0,100];
 
 						[_Unit,_StaticCreated,_NearestEnemy] spawn
@@ -78,6 +84,12 @@ params ["_StaticList"];
 				{
 					if !(_AssembledG isEqualTo "") then
 					{
+						// DEBUG
+						private _dbgMsg = format ["[VCOM DEBUG] StaticCheck: %1 solo-deploying UAV %2 -> %3", name _Unit, _CurrentBackPack, _AssembledG];
+						diag_log _dbgMsg;
+						systemChat _dbgMsg;
+						// END DEBUG
+
 						// --- TDSA CHANGE: UAV spawn fix.
 						// Removed _StaticList from spawn params — spawned threads cannot safely
 						// mutate FSM-scope arrays (_foreachindex is also undefined inside spawn).

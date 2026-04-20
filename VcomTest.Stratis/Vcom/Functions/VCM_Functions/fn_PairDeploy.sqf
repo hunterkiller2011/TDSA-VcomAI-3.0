@@ -71,6 +71,15 @@ private _toRemove = [];
 
                     _toRemove pushBack _foreachindex;
 
+                    // DEBUG
+                    private _dbgMsg = format ["[VCOM DEBUG] PairDeploy: dispatching pair — weapon: %1 (%2), support: %3 (%4), vehicle: %5, enemy dist: %6m",
+                        name _weaponUnit, _weaponBagClass,
+                        name _supportUnit, _supportBagClass,
+                        _vehicleClass, round _dist];
+                    diag_log _dbgMsg;
+                    systemChat _dbgMsg;
+                    // END DEBUG
+
                     // --- Async assembly thread — FSM call returns immediately after this ---
                     [_weaponUnit, _supportUnit, _vehicleClass, _weaponBagClass, _supportBagClass, _nearestEnemy] spawn
                     {
@@ -125,12 +134,22 @@ private _toRemove = [];
                         if (!_arrived) then
                         {
                             // Timeout — release flags so the pair can be retried next cycle
+                            // DEBUG
+                            private _dbgTimeout = format ["[VCOM DEBUG] PairDeploy: TIMEOUT — %1 did not reach %2 in 30s, resetting flags", name _mover, name _target];
+                            diag_log _dbgTimeout;
+                            systemChat _dbgTimeout;
+                            // END DEBUG
                             _weaponUnit  setVariable ["VCM_InDeployment", false, false];
                             _supportUnit setVariable ["VCM_InDeployment", false, false];
                         }
                         else
                         {
                             // Arrived — stop both units
+                            // DEBUG
+                            private _dbgArrive = format ["[VCOM DEBUG] PairDeploy: %1 arrived — assembling %2", name _mover, _vehicleClass];
+                            diag_log _dbgArrive;
+                            systemChat _dbgArrive;
+                            // END DEBUG
                             _mover doStop true;
                             if (alive _target) then { _target doStop true; };
 
