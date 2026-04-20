@@ -10,6 +10,11 @@
 
 	
 	[] call VCM_fnc_WeaponDefine;
+
+	// --- TDSA CHANGE: build assembly pair lookup table after weapon definitions are ready ---
+	[] call VCM_fnc_StaticDefine;
+	// --- END TDSA CHANGE ---
+
 	[] spawn VCM_fnc_AIDRIVEBEHAVIOR;
 	[] spawn VCM_fnc_Scheduler;
 	

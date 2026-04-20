@@ -225,6 +225,12 @@ class VCOM
 				
 		//[_StaticList] call VCM_fnc_StaticCheck.sqf;
 		class StaticCheck {};
+		// --- TDSA CHANGE: new functions for paired static weapon deployment ---
+		// [] call VCM_fnc_StaticDefine — builds VCM_AssemblyPairList at init
+		class StaticDefine {};
+		// [_PairList] call VCM_fnc_PairDeploy — immediate-return pair dispatch
+		class PairDeploy {};
+		// --- END TDSA CHANGE ---
 		
 		//[] spawn VCM_fnc_MonitorDist;
 		class MonitorDist {};

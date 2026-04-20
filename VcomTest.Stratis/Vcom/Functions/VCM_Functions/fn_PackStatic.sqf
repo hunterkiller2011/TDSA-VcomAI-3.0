@@ -10,12 +10,16 @@
 		0: OBJECT - Gunner
 		1: STRING - Backpack classname
 		2: OBJECT - Static weapon
+		3: OBJECT - (optional) Support unit to also receive their backpack on teardown [default: objNull]
+		4: STRING - (optional) Support unit backpack classname [default: ""]
 
 	Returns:
 		NOTHING
 */
 
-params ["_unit","_backpack","_staticCreated"];
+// --- TDSA CHANGE: added optional support unit params for paired-assembly teardown ---
+params ["_unit","_backpack","_staticCreated",["_supportUnit",objNull],["_supportBagClass",""]];
+// --- END TDSA CHANGE ---
 
 sleep 10;
 
@@ -47,4 +51,10 @@ if (alive _unit) then
 	deleteVehicle _staticCreated;
 	sleep 1;
 	_unit addBackpackGlobal _backpack;
+	// --- TDSA CHANGE: restore support unit's backpack if it was part of a paired assembly ---
+	if (!(isNull _supportUnit) && {alive _supportUnit} && {!(_supportBagClass isEqualTo "")}) then
+	{
+		_supportUnit addBackpackGlobal _supportBagClass;
+	};
+	// --- END TDSA CHANGE ---
 };

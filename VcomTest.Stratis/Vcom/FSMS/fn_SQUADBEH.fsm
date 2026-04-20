@@ -209,6 +209,9 @@ class FSM
                                          "private _Cover2Cover = -100;" \n
                                          "private _WaypointGen = -910;" \n
                                          "private _StaticList = [];" \n
+                                         "// --- TDSA CHANGE: pair list for cooperative static weapon deployment ---" \n
+                                         "private _PairList = [];" \n
+                                         "// --- END TDSA CHANGE ---" \n
                                          "private _SatchelList = [];" \n
                                          "private _StartingBehavior = behaviour _leader;" \n
                                          "private _CurUnits = (units _Group);" \n
@@ -555,7 +558,9 @@ class FSM
                         itemno = 17;
                         init = /*%FSM<STATEINIT""">*/"private _ReturnResponse = _Group call VCM_fnc_KitChk;" \n
                          "_ReturnResponse params [""_MedList"",""_L1"",""_SniperList""];" \n
-                         "_L1 params [""_StaticList""];" \n
+                         "// --- TDSA CHANGE: unpack _PairList from extended fn_RStatics return ---" \n
+                         "_L1 params [""_StaticList"",""_PairList""];" \n
+                         "// --- END TDSA CHANGE ---" \n
                          "_BackbkC = time;" \n
                          "" \n
                          "[_group,_MedList] call VCM_fnc_MedicalHandler;" \n
@@ -901,7 +906,7 @@ class FSM
                                         priority = 92.000000;
                                         to="Return";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"(count _StaticList > 0) && {_BackbkC4 + 120 < time}"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(count _StaticList > 0 || {count _PairList > 0}) && {_BackbkC4 + 120 < time}"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/"//[_x,_CurrentBackPack,_VCOM_HASUAV]" \n
                                          "" \n
                                          "private [""_t"", ""_wait""];" \n
@@ -909,6 +914,9 @@ class FSM
                                          "_wait = 3;" \n
                                          "" \n
                                          "_StaticList = [_StaticList] call VCM_fnc_StaticCheck;" \n
+                                         "// --- TDSA CHANGE: process matched assembly pairs (immediate return, async threads) ---" \n
+                                         "_PairList = [_PairList] call VCM_fnc_PairDeploy;" \n
+                                         "// --- END TDSA CHANGE ---" \n
                                          "" \n
                                          "_BackbkC4 = time;" \n
                                          "" \n
