@@ -35,7 +35,11 @@ private _Muzzles = getarray(configfile >> "CfgWeapons" >> "Put" >> "muzzles");
 	private _Muzz = _x;
 	private _MagText= getArray(configfile >> "CfgWeapons" >> "Put" >> _x >> "magazines");
 	{
-		if ((_x#1) in _MagText) then {VCM_MineList set [_foreachindex,[_x#0,_x#1,_x#2,_Muzz]];};
+		if ((_x#1) in _MagText) then
+		{
+			private _roadPreferred = (_x#0) isKindOf "ATMine" || (_x#0) isKindOf "SLAMDirectionalMine";
+			VCM_MineList set [_foreachindex,[_x#0,_x#1,_x#2,_Muzz,_roadPreferred]];
+		};
 	} foreach VCM_MineList;
 	{ 
 		if ((_x#1) in _MagText) then {VCM_SatchelList set [_foreachindex,[_x#0,_x#1,_x#2,_Muzz]];};
